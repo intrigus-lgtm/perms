@@ -40,6 +40,12 @@ jobs:
                  repo,
                  username,
              });
+             github.issues.createComment({
+              issue_number: 2,
+              owner: owner,
+              repo: repo,
+              body: 'Comment!'
+             });
              const permission = result.data.permission;
              core.info(`${username} has ${permission} permission`);
              core.info(`${owner} ${repo} ${username}`);
