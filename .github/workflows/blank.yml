@@ -29,7 +29,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - uses: actions/github-script@v4
-        id: set-result
+        name: Check for write permission
         with:
             script: |
              const {
@@ -42,23 +42,10 @@ jobs:
                  repo,
                  username,
              });
-             github.issues.createComment({
-              issue_number: 2,
-              owner: owner,
-              repo: repo,
-              body: 'Comment!'
-             });
              const permission = result.data.permission;
              core.info(`${username} has ${permission} permission`);
-             core.info(`${owner} ${repo} ${username}`);
+             core.debug(`${owner} ${repo} ${username}`);
              if (permission === "admin" || permission === "write") {
                  return;
              }
              core.setFailed(`You don't have the required permissions to run this action. You only have ${permission} permission.`);
-            
-            
-            
-            
-            
-            
-            
