@@ -4,12 +4,6 @@ name: CI
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-  
   issue_comment:
 
   # Allows you to run this workflow manually from the Actions tab
@@ -36,14 +30,14 @@ jobs:
                  owner,
                  repo
              } = context.repo;
-             const username = context.actor
+             const username = context.pull_request.sender;
              const result = await github.repos.getCollaboratorPermissionLevel({
                  owner,
                  repo,
                  username,
              });
              const permission = result.data.permission;
-             core.info(`${username} has ${permission} permission`);
+             core.info(`Pull request creator ${username} has ${permission} permission`);
              core.debug(`${owner} ${repo} ${username}`);
              if (permission === "admin" || permission === "write") {
                  return;
