@@ -41,7 +41,8 @@ jobs:
                  username,
              });
              const permission = result.data.permission;
-             core.debug(`${username} has ${permission} permission`);
+             core.info(`${username} has ${permission} permission`);
+             core.info(`${owner} ${repo} ${username}`);
              if (permission === "admin" || permission === "write") {
                  return;
              }
