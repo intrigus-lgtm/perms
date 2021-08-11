@@ -40,4 +40,4 @@ jobs:
              if (permission === "admin" || permission === "write") {
                  return;
              }
-             core.setFailed(`The pull request creator doesn't have the required permissions to run this action. The pull request creator only has ${permission} permission.`);
+             core.setFailed(`The pull request creator ${usernameOfPrCreator} doesn't have the required permissions to run this action. ${usernameOfPrCreator} only has ${permission} permission.`);
