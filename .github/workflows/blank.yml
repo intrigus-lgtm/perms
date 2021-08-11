@@ -40,7 +40,8 @@ jobs:
                    });
                    
              core.info(result);
-             const permission = result.permission
+             core.info(result.data);
+             const permission = result.data.permission
              core.info(permission)
              //if (permission === "admin" || permission === "write") {
              //return;
