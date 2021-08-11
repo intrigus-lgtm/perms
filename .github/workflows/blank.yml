@@ -21,16 +21,23 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
       # Runs a single command using the runners shell
       - uses: actions/github-script@v4
         name: Check for write permission
+        env:
+         PR_CREATOR_USERNAME: ${{ github.pull_request.sender }}
         with:
             script: |
              const {
                  owner,
                  repo
              } = context.repo;
-             const username = context.issue.pull_request.sender;
+             const { PR_CREATOR_USERNAME } = process.env;
+             const username = PR_CREATOR_USERNAME;
              const result = await github.repos.getCollaboratorPermissionLevel({
                  owner,
                  repo,
