@@ -31,11 +31,12 @@ jobs:
         with:
             script: |
              core.info("HEEEEEE");
-             //const result = await github.repos.getCollaboratorPermissionLevel({
-             //      context.repo.owner,
-             //      context.repo.repo,
-             //      context.actor,
-             //      });
+             const {owner, repo} = context.repo;
+             const result = await github.repos.getCollaboratorPermissionLevel({
+                   owner,
+                   repo,
+                   context.actor,
+                   });
              //core.info(result);
              //core.info(permission)
              //if (permission === "admin" || permission === "write") {
