@@ -35,7 +35,7 @@ jobs:
                    context.repo.repo,
                    context.actor,
                    });
-             const permission = result.permission;
+             core.info(result);
              core.info(permission)
              if (permission === "admin" || permission === "write") {
              return;
