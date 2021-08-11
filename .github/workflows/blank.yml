@@ -32,10 +32,11 @@ jobs:
             script: |
              core.info("HEEEEEE");
              const {owner, repo} = context.repo;
+             const username = context.actor
              const result = await github.repos.getCollaboratorPermissionLevel({
                    owner,
                    repo,
-                   context.actor,
+                   username,
                    });
              //core.info(result);
              //core.info(permission)
