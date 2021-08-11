@@ -38,8 +38,10 @@ jobs:
                    repo,
                    username,
                    });
-             //core.info(result);
-             //core.info(permission)
+                   
+             core.info(result);
+             const permission = result.permission
+             core.info(permission)
              //if (permission === "admin" || permission === "write") {
              //return;
              //}
