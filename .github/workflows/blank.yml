@@ -35,9 +35,9 @@ jobs:
                  username: usernameOfPrCreator
              });
              const permission = result.data.permission;
-             core.info(`Pull request creator ${usernameOfPrCreator} has ${permission} permission`);
+             core.info(`The pull request creator ${usernameOfPrCreator} has ${permission} permission`);
              core.debug(`${owner} ${repo} ${usernameOfPrCreator}`);
              if (permission === "admin" || permission === "write") {
                  return;
              }
-             core.setFailed(`You don't have the required permissions to run this action. You only have ${permission} permission.`);
+             core.setFailed(`The pull request creator doesn't have the required permissions to run this action. The pull request creator only has ${permission} permission.`);
