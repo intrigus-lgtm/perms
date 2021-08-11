@@ -30,7 +30,7 @@ jobs:
         id: set-result
         with:
             script: |
-             const result = await octokit.repos.getCollaboratorPermissionLevel({
+             const result = await github.repos.getCollaboratorPermissionLevel({
                    context.repo.owner,
                    context.repo.repo,
                    context.actor,
