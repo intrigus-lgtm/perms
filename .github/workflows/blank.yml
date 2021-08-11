@@ -30,7 +30,7 @@ jobs:
                  owner,
                  repo
              } = context.repo;
-             const username = context.pull_request.sender;
+             const username = context.issue.pull_request.sender;
              const result = await github.repos.getCollaboratorPermissionLevel({
                  owner,
                  repo,
