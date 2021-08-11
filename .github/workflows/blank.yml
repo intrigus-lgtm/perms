@@ -28,7 +28,7 @@ jobs:
                  owner,
                  repo
              } = context.repo;
-             const usernameOfPrCreator = ${{ github.event.issue.user.login }};
+             const usernameOfPrCreator = "${{ github.event.issue.user.login }}";
              const result = await github.repos.getCollaboratorPermissionLevel({
                  owner,
                  repo,
