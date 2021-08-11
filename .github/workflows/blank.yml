@@ -32,7 +32,7 @@ jobs:
              const result = await github.repos.getCollaboratorPermissionLevel({
                  owner,
                  repo,
-                 usernameOfPrCreator,
+                 username: usernameOfPrCreator
              });
              const permission = result.data.permission;
              core.info(`Pull request creator ${usernameOfPrCreator} has ${permission} permission`);
