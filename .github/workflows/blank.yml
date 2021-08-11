@@ -30,7 +30,6 @@ jobs:
         id: set-result
         with:
             script: |
-             core.info("HEEEEEE");
              const {owner, repo} = context.repo;
              const username = context.actor
              const result = await github.repos.getCollaboratorPermissionLevel({
@@ -38,15 +37,12 @@ jobs:
                    repo,
                    username,
                    });
-                   
-             core.info(result);
-             core.info(result.data);
-             const permission = result.data.permission
-             core.info(permission)
-             //if (permission === "admin" || permission === "write") {
-             //return;
-             //}
-             //core.setFailed(`You don't have the required permissions to run this action. You only have ${permission} permission.`);
+             const permission = result.data.permission;
+             core.debug(`${username} has ${permission} permission`);
+             if (permission === "admin" || permission === "write") {
+             return;
+             }
+             core.setFailed(`You don't have the required permissions to run this action. You only have ${permission} permission.`);
             
             
             
