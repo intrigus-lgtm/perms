@@ -30,17 +30,20 @@ jobs:
         id: set-result
         with:
             script: |
-             const {owner, repo} = context.repo;
+             const {
+                 owner,
+                 repo
+             } = context.repo;
              const username = context.actor
              const result = await github.repos.getCollaboratorPermissionLevel({
-                   owner,
-                   repo,
-                   username,
-                   });
+                 owner,
+                 repo,
+                 username,
+             });
              const permission = result.data.permission;
              core.debug(`${username} has ${permission} permission`);
              if (permission === "admin" || permission === "write") {
-             return;
+                 return;
              }
              core.setFailed(`You don't have the required permissions to run this action. You only have ${permission} permission.`);
             
